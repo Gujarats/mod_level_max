@@ -18,37 +18,44 @@
     }
 };
 
-::LevelMax.appendPostElevenAttributeRolls <- function( _player )
+::LevelMax.isNormalStatRollRequired <- function( _player )
 {
-    if (!::LevelMax.conf("GrantAttributeLevelsAfterLevel11"))
+    if (!::LevelMax.conf("EnableNormalStatRollsAfterLevel11")
+        || _player.m.Level <= 11
+        || _player.m.Level > ::LevelMax.conf("MaximumLevel"))
     {
-        return;
+        return false;
     }
 
-    local additionalLevels = ::Math.max(0, ::LevelMax.conf("MaximumLevel") - 11);
-    if (additionalLevels > 0)
+    if (_player.m.Attributes.len() == 0)
     {
-        _player.fillAttributeLevelUpValues(additionalLevels);
+        return true;
     }
+
+    for (local i = 0; i < ::Const.Attributes.COUNT; i = ++i)
+    {
+        if (_player.m.Attributes[i].len() != 0 && _player.m.Attributes[i][0] != 1)
+        {
+            return false;
+        }
+    }
+
+    return true;
 };
 
 ::LevelMax.rebuildLevelXP();
 
 ::LevelMax.HooksMod.hook("scripts/entity/tactical/player", function( q )
 {
-    q.setScenarioValues = @(__original) function()
+    q.getAttributeLevelUpValues = @(__original) function()
     {
-        __original();
-        ::LevelMax.appendPostElevenAttributeRolls(this);
-    };
-
-    q.setStartValuesEx = @(__original) function( _backgrounds, _addTraits = true )
-    {
-        __original(_backgrounds, _addTraits);
-        if (_addTraits)
+        if (::LevelMax.isNormalStatRollRequired(this))
         {
-            ::LevelMax.appendPostElevenAttributeRolls(this);
+            this.m.Attributes.clear();
+            this.fillAttributeLevelUpValues(1);
         }
+
+        return __original();
     };
 
     q.updateLevel = @(__original) function()

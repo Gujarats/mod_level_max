@@ -17,9 +17,9 @@ Level Max extends player-brother progression past level 11 while keeping the van
 
 - **Maximum Level**: The highest level for player brothers. The default is 51; the allowed range is 11–100.
 - **Grant Perk Points After Level 11**: Enabled by default. Gives one perk point at every level from 12 through the configured cap.
-- **Grant Attribute Levels After Level 11**: Enabled by default. Gives the normal attribute selection at every level from 12 through the configured cap. Talent stars affect these rolls just as they do before level 11.
+- **Enable Normal Stat Rolls After Level 11**: Enabled by default. Replaces vanilla veteran-level `+1` fallback values with normal, talent-star-aware stat rolls from level 12 through the configured cap. It also works for existing brothers when they next level up.
 
-The vanilla veteran XP progression is unchanged. Restart the game after changing settings. A setting change does not retroactively add or remove perk points or attribute rolls that are already stored in a save.
+The vanilla veteran XP progression is unchanged. Restart the game after changing settings. A perk setting change does not retroactively add or remove perk points already stored in a save.
 
 ## Compatibility
 
@@ -30,4 +30,3 @@ Legends is intentionally unsupported. If Legends is detected, Level Max logs tha
 ## Testing
 
 Use `tools/test_level_max_layout.ps1` for static project checks and `tools/build_release.ps1` to create the archive. Follow `test-results/level-max-manual-matrix.md` for in-game checks, including save/load and the Legends guard.
-

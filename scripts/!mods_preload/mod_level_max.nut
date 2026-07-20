@@ -26,7 +26,7 @@
     local general = ::LevelMax.Mod.ModSettings.addPage("General");
     general.addRangeSetting("MaximumLevel", 51, 11, 100, 1, "Maximum Level", "Highest level player brothers can reach. Takes effect after restarting the game.");
     general.addBooleanSetting("GrantPerkPointsAfterLevel11", true, "Grant Perk Points After Level 11", "Give one perk point at every level from 12 through the maximum.");
-    general.addBooleanSetting("GrantAttributeLevelsAfterLevel11", true, "Grant Attribute Levels After Level 11", "Allow normal star-aware attribute choices at every level from 12 through the maximum.");
+    general.addBooleanSetting("EnableNormalStatRollsAfterLevel11", true, "Enable Normal Stat Rolls After Level 11", "Replace the vanilla +1 veteran fallback with normal talent-aware stat rolls from level 12 through the maximum.");
 
     local legendsDetected = "mods_getRegisteredMod" in getroottable() && ::mods_getRegisteredMod("mod_legends") != null;
     if (legendsDetected)
@@ -37,4 +37,3 @@
 
     ::include("scripts/mods/level_max_service");
 });
-
