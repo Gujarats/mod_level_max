@@ -13,6 +13,13 @@ function Require-Token([string] $File, [string] $Token) {
     }
 }
 
+function Forbid-Token([string] $File, [string] $Token) {
+    $path = Join-Path $root $File
+    if ((Get-Content -Raw -LiteralPath $path).Contains($Token)) {
+        throw "Unexpected '$Token' in $File"
+    }
+}
+
 Require-Token 'scripts/!mods_preload/mod_level_max.nut' 'mod_level_max'
 Require-Token 'scripts/!mods_preload/mod_level_max.nut' 'MaximumLevel'
 Require-Token 'scripts/!mods_preload/mod_level_max.nut' 'GrantPerkPointsAfterLevel11'
@@ -26,6 +33,8 @@ Require-Token 'scripts/mods/level_max_service.nut' 'scripts/entity/tactical/play
 Require-Token 'scripts/mods/level_max_service.nut' 'q.updateLevel = @(__original) function()'
 Require-Token 'scripts/mods/level_max_service.nut' 'GrantPerkPointsAfterLevel11'
 Require-Token 'scripts/mods/level_max_service.nut' 'GrantAttributeLevelsAfterLevel11'
+Require-Token 'scripts/mods/level_max_service.nut' 'local VeteranLevelStart = 11;'
+Forbid-Token 'scripts/mods/level_max_service.nut' '::Const.LevelXP.len() - 11'
 Require-Token 'README.md' '## Required dependencies'
 Require-Token 'README.md' '## Installation'
 Require-Token 'README.md' '## Configuration'

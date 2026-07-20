@@ -3,11 +3,12 @@
 ::LevelMax.rebuildLevelXP <- function()
 {
     local maximumLevel = ::LevelMax.conf("MaximumLevel");
+    local VeteranLevelStart = 11;
     ::Const.LevelXP = clone ::LevelMax.OriginalLevelXP;
 
     while (::Const.LevelXP.len() < maximumLevel)
     {
-        local veteranIndex = ::Const.LevelXP.len() - 11;
+        local veteranIndex = ::Const.LevelXP.len() - VeteranLevelStart;
         ::Const.LevelXP.push(::Const.LevelXP[::Const.LevelXP.len() - 1] + 4000 + 1000 * veteranIndex);
     }
 
