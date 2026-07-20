@@ -26,5 +26,10 @@ Require-Token 'scripts/mods/level_max_service.nut' 'scripts/entity/tactical/play
 Require-Token 'scripts/mods/level_max_service.nut' 'q.updateLevel = @(__original) function()'
 Require-Token 'scripts/mods/level_max_service.nut' 'GrantPerkPointsAfterLevel11'
 Require-Token 'scripts/mods/level_max_service.nut' 'GrantAttributeLevelsAfterLevel11'
+Require-Token 'README.md' '## Required dependencies'
+Require-Token 'README.md' '## Installation'
+Require-Token 'README.md' '## Configuration'
+Require-Token 'README.md' '## Compatibility'
+Require-Token 'README.md' '## Testing'
 
 Write-Host 'Level Max layout validation passed.'
