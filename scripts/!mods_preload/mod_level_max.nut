@@ -11,7 +11,7 @@
 );
 ::LevelMax.HooksMod.require("mod_msu >= 1.9.0");
 
-::LevelMax.HooksMod.queue(">mod_msu", function()
+::LevelMax.HooksMod.queue(">mod_msu",">mod_reforged", function()
 {
     ::LevelMax.Mod <- ::MSU.Class.Mod(
         ::LevelMax.ID,

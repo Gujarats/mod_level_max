@@ -2,7 +2,7 @@
   "mod_id": "mod_level_max",
   "mod_name": "Level Max",
   "version": "1.0.0",
-  "game_data_dir": "",
+  "game_data_dir": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Battle Brothers\\data",
   "steam_app_id": "365360"
 }
 
