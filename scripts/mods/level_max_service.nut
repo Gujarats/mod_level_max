@@ -9,6 +9,9 @@
     while (::Const.LevelXP.len() < maximumLevel)
     {
         local veteranIndex = ::Const.LevelXP.len() - VeteranLevelStart;
+        // 4000 is the base XP required for the first generated veteran level
+        // after level 11. Each later generated level adds another 1000 XP,
+        // preserving the intended escalating veteran-level progression.
         ::Const.LevelXP.push(::Const.LevelXP[::Const.LevelXP.len() - 1] + 4000 + 1000 * veteranIndex);
     }
 
