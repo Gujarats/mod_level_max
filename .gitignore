@@ -3,4 +3,4 @@ release/*.zip
 dist/
 release/
 tools/
-
+test-results/
