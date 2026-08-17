@@ -30,3 +30,6 @@ Legends is intentionally unsupported. If Legends is detected, Level Max logs tha
 ## Testing
 
 Use `tools/test_level_max_layout.ps1` for static project checks and `tools/build_release.ps1` to create the archive. Follow `test-results/level-max-manual-matrix.md` for in-game checks, including save/load and the Legends guard.
+# Debug Logging
+
+`Debug Logging` on the General page controls Level Max output when Global Developer Test is absent. Global Developer Test overrides this value while installed.
